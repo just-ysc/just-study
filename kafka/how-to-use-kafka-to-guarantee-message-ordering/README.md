@@ -1,6 +1,6 @@
 # Kafka에서 메세지 순서를 보장하는 방법
 
-![Kafka Components](../assets/kafka-components.webp)
+![Kafka Components](../../assets/kafka-components.webp)
 
 Kafka의 구성요소는 다음과 같은 관계를 지니고 있다. 실제로 메세지가 교환되는 채널의 단위인 topic은 여러개의 partition으로 분리가 가능하기 때문에, 병렬 처리와 로드 밸런싱이 가능한 구조이다.  
 그래서 단일 partition을 사용할 때에는 기본적으로 전송되는 메세지의 순서 보장이 가능하지만, partition이 둘 이상이 되어 서로 다른 broker에 위치하게 되면 개별 partition 내에서만 순서 보장이 가능하다.  
