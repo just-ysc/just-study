@@ -11,9 +11,6 @@ publishing {
     ...
     publications {
         create<MavenPublication>("maven") {
-            configurations["runtimeElements"].hierarchy.forEach {
-                it.dependencies.removeIf { dependency -> dependency.group == "GROUP_TO_EXCLUDE" }
-            }
             from(components["java"])
             artifactId = "my-artifact"
 
@@ -33,6 +30,14 @@ publishing {
         }
     }
     ...
+}
+
+tasks.named("generatePomFileForMavenPublication") {
+    doFirst {
+        configurations["runtimeElements"].hierarchy.forEach {
+            it.dependencies.removeIf { dependency -> dependency.group == "GROUP_TO_EXCLUDE" }
+        }
+    }
 }
 ```
 
